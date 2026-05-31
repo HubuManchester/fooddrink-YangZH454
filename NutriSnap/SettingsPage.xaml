@@ -3,25 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutriSnap.SettingsPage"
              Title="Settings"
-             BackgroundColor="#F1F8E9">
+             BackgroundColor="{AppThemeBinding Light=#F1F8E9, Dark=#121212}">
 
     <VerticalStackLayout x:Name="SettingsLayout" Spacing="25" Padding="20">
 
-        <Label Text="Accessibility &amp; Preferences" FontSize="{DynamicResource TitleFont}" FontAttributes="Bold" TextColor="#2E7D32" />
+        <Label Text="Accessibility &amp; Preferences" FontSize="{DynamicResource TitleFont}" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#2E7D32, Dark=#A5D6A7}" />
 
         <Grid ColumnDefinitions="*, Auto">
-            <Label Text="Dark Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" TextColor="#333333" />
+            <Label Text="Dark Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" TextColor="{AppThemeBinding Light=#333333, Dark=White}" />
             <Switch x:Name="ThemeSwitch" Grid.Column="1" Toggled="OnThemeToggled" OnColor="#4CAF50" />
         </Grid>
 
         <Grid ColumnDefinitions="*, Auto">
-            <Label Text="Large Text Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" TextColor="#333333" />
+            <Label Text="Large Text Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" TextColor="{AppThemeBinding Light=#333333, Dark=White}" />
             <Switch x:Name="FontSwitch" Grid.Column="1" Toggled="OnLargeTextToggled" OnColor="#4CAF50" />
         </Grid>
 
-        <Label x:Name="DemoText" Text="This is a preview of your text size." TextColor="Gray" FontSize="{DynamicResource SmallFont}" />
+        <Label x:Name="DemoText" Text="This is a preview of your text size." TextColor="{AppThemeBinding Light=Gray, Dark=#AAAAAA}" FontSize="{DynamicResource SmallFont}" />
 
-        <BoxView HeightRequest="1" Color="#A5D6A7" Margin="0,20,0,20" />
+        <BoxView HeightRequest="1" Color="{AppThemeBinding Light=#A5D6A7, Dark=#333333}" Margin="0,20,0,20" />
 
         <Button Text="Log Out" Clicked="OnLogoutClicked" BackgroundColor="#E53935" TextColor="White" HeightRequest="55" CornerRadius="25" FontSize="{DynamicResource MediumFont}" FontAttributes="Bold" />
 

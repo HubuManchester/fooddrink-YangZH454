@@ -9,6 +9,9 @@ namespace NutriSnap
     public partial class AddRecordPage : ContentPage
     {
         private Location? _currentLocation;
+        private string _tempPhotoPath = string.Empty;
+        private string _tempLocation = string.Empty;
+
         public AddRecordPage()
         {
             InitializeComponent();
@@ -24,6 +27,8 @@ namespace NutriSnap
                     var photo = await MediaPicker.Default.CapturePhotoAsync();
                     if (photo != null)
                     {
+                        _tempPhotoPath = photo.FullPath;
+
                         var stream = await photo.OpenReadAsync();
                         FoodPhoto.Source = ImageSource.FromStream(() => stream);
                         FoodPhoto.IsVisible = true;
@@ -47,15 +52,14 @@ namespace NutriSnap
             {
                 LocationLabel.Text = "Fetching location...";
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
-
                 _currentLocation = await Geolocation.Default.GetLocationAsync(request);
 
                 if (_currentLocation != null)
                 {
-                    LocationLabel.Text = $"Lat: {_currentLocation.Latitude:F2}, Lon: {_currentLocation.Longitude:F2}";
+                    _tempLocation = $"Lat: {_currentLocation.Latitude:F3}, Lon: {_currentLocation.Longitude:F3}";
+                    LocationLabel.Text = _tempLocation;
 
                     ViewMapButton.IsVisible = true;
-
                     try { Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.5)); } catch { }
                 }
                 else
@@ -69,7 +73,7 @@ namespace NutriSnap
             }
         }
 
-        // --- App Integration ---
+        // --- App Integration (Map) ---
         private async void OnViewMapClicked(object sender, EventArgs e)
         {
             if (_currentLocation != null)
@@ -107,7 +111,9 @@ namespace NutriSnap
             {
                 Name = NameEntry.Text.Trim(),
                 Category = CategoryEntry.Text.Trim(),
-                Calories = calories
+                Calories = calories,
+                PhotoPath = _tempPhotoPath,
+                LocationText = _tempLocation
             };
 
             await FoodCatalogService.AddFoodAsync(newItem);

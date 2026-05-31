@@ -3,24 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutriSnap.AddRecordPage"
              Title="Add New Record"
-             BackgroundColor="#F1F8E9">
+             BackgroundColor="{AppThemeBinding Light=#F1F8E9, Dark=#121212}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-            <Entry x:Name="NameEntry" Placeholder="Food Name (e.g., Apple)" BackgroundColor="White" TextColor="#2E7D32" />
-            <Entry x:Name="CategoryEntry" Placeholder="Category (e.g., Snack)" BackgroundColor="White" TextColor="#2E7D32" />
-            <Entry x:Name="CaloriesEntry" Placeholder="Calories (e.g., 95)" Keyboard="Numeric" BackgroundColor="White" TextColor="#2E7D32" />
+            <Entry x:Name="NameEntry" Placeholder="Food Name (e.g., Apple)" BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}" TextColor="{AppThemeBinding Light=#2E7D32, Dark=White}" />
+            <Entry x:Name="CategoryEntry" Placeholder="Category (e.g., Snack)" BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}" TextColor="{AppThemeBinding Light=#2E7D32, Dark=White}" />
+            <Entry x:Name="CaloriesEntry" Placeholder="Calories (e.g., 95)" Keyboard="Numeric" BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}" TextColor="{AppThemeBinding Light=#2E7D32, Dark=White}" />
 
             <Label x:Name="ErrorLabel" TextColor="Red" FontAttributes="Bold" IsVisible="False" />
 
             <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10" Margin="0,10,0,0">
-                <Label x:Name="PhotoLabel" Text="No photo captured" VerticalOptions="Center" TextColor="Gray" />
+                <Label x:Name="PhotoLabel" Text="No photo captured" VerticalOptions="Center" TextColor="{AppThemeBinding Light=Gray, Dark=#AAAAAA}" />
                 <Button Grid.Column="1" Text="Take Photo" Clicked="OnTakePhotoClicked" BackgroundColor="#81C784" CornerRadius="8" />
             </Grid>
             <Image x:Name="FoodPhoto" HeightRequest="200" Aspect="AspectFit" IsVisible="False" />
 
             <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="10" Margin="0,10,0,10">
-                <Label x:Name="LocationLabel" Text="No location captured" VerticalOptions="Center" TextColor="Gray" />
+                <Label x:Name="LocationLabel" Text="No location captured" VerticalOptions="Center" TextColor="{AppThemeBinding Light=Gray, Dark=#AAAAAA}" />
                 <Button Grid.Column="1" Text="Get Location" Clicked="OnGetLocationClicked" BackgroundColor="#81C784" CornerRadius="8" />
                 <Button x:Name="ViewMapButton" Grid.Column="2" Text="Map" Clicked="OnViewMapClicked" IsVisible="False" BackgroundColor="#4CAF50" CornerRadius="8" />
             </Grid>
