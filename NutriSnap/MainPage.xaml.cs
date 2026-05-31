@@ -11,12 +11,12 @@ namespace NutriSnap
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             FoodListView.ItemsSource = null;
-            FoodListView.ItemsSource = FoodCatalogService.GetAllFoods();
+            FoodListView.ItemsSource = await FoodCatalogService.GetAllFoodsAsync();
         }
 
         private async void OnAddNewClicked(object sender, EventArgs e)

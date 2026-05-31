@@ -35,10 +35,8 @@ namespace NutriSnap
                 Calories = calories
             };
 
-            FoodCatalogService.AddFood(newItem);
-
+            await FoodCatalogService.AddFoodAsync(newItem);
             await DisplayAlert("Success", "Record added successfully!", "OK");
-
             await Shell.Current.GoToAsync("..");
         }
 

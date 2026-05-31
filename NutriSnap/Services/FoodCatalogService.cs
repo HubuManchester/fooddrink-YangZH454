@@ -1,29 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
+using SQLite;
 using NutriSnap.Models;
 
 namespace NutriSnap.Services
 {
     public static class FoodCatalogService
     {
-        private static List<FoodItem> _items = new List<FoodItem>
-        {
-            new FoodItem { Name = "Avocado Toast", Category = "Breakfast", Calories = 250 },
-            new FoodItem { Name = "Grilled Chicken Salad", Category = "Lunch", Calories = 400 },
-            new FoodItem { Name = "Black Coffee", Category = "Drink", Calories = 5 }
-        };
+        private static SQLiteAsyncConnection? _db;
 
-        public static List<FoodItem> GetAllFoods()
+        private static async Task Init()
         {
-            return _items;
+            if (_db != null)
+                return;
+            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NutriSnap.db3");
+            _db = new SQLiteAsyncConnection(databasePath);
+            await _db.CreateTableAsync<FoodItem>();
         }
 
-        public static void AddFood(FoodItem item)
+        public static async Task<List<FoodItem>> GetAllFoodsAsync()
         {
-            _items.Add(item);
+            await Init();
+            return await _db!.Table<FoodItem>().ToListAsync();
+        }
+
+        public static async Task AddFoodAsync(FoodItem item)
+        {
+            await Init();
+            await _db!.InsertAsync(item);
         }
     }
 }
