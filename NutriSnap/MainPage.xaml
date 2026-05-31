@@ -3,30 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:NutriSnap.Models"
              x:Class="NutriSnap.MainPage"
-             Title="NutriSnap Records">
+             Title="NutriSnap Records"
+             BackgroundColor="#F1F8E9">
+    <Grid RowDefinitions="*, Auto" Padding="15">
 
-    <Grid RowDefinitions="*, Auto" Padding="20">
-
-        <CollectionView x:Name="FoodListView" Grid.Row="0">
+        <CollectionView x:Name="FoodListView" Grid.Row="0" SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:FoodItem">
-                    <Frame Margin="0,0,0,10" Padding="15" BorderColor="LightGray">
-                        <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="10">
-                            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                                <Label Text="{Binding Name}" FontSize="{DynamicResource MediumFont}" FontAttributes="Bold" />
-                                <Label Text="{Binding Category}" FontSize="{DynamicResource SmallFont}" TextColor="Gray" />
-                                <Label Text="{Binding AccessibleSummary}" FontSize="{DynamicResource SmallFont}" Margin="0,5,0,0" />
-                            </VerticalStackLayout>
 
-                            <Button Grid.Column="1" Text="🔊 Read" Clicked="OnReadClicked" CommandParameter="{Binding .}" VerticalOptions="Center" />
-                            <Button Grid.Column="2" Text="⏹ Stop" Clicked="OnStopReadClicked" BackgroundColor="DarkRed" VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="#E53935" Clicked="OnDeleteClicked" CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Frame Margin="0,0,0,15" Padding="15" BackgroundColor="White" BorderColor="#A5D6A7" CornerRadius="12" HasShadow="True">
+                            <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="10">
+
+                                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" FontSize="{DynamicResource MediumFont}" FontAttributes="Bold" TextColor="#2E7D32" />
+                                    <Label Text="{Binding Category}" FontSize="{DynamicResource SmallFont}" TextColor="#66BB6A" FontAttributes="Italic" />
+                                    <Label Text="{Binding AccessibleSummary}" FontSize="{DynamicResource SmallFont}" Margin="0,5,0,0" TextColor="#555555" />
+                                </VerticalStackLayout>
+
+                                <Button Grid.Column="1" Text="Read" Clicked="OnReadClicked" CommandParameter="{Binding .}" 
+                                        VerticalOptions="Center" BackgroundColor="#81C784" TextColor="White" CornerRadius="8" />
+                                <Button Grid.Column="2" Text="Stop" Clicked="OnStopReadClicked" 
+                                        VerticalOptions="Center" BackgroundColor="#E57373" TextColor="White" CornerRadius="8" />
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Grid.Row="1" Text="➕ Add New Record" Clicked="OnAddNewClicked" Margin="0,10,0,0" HeightRequest="50" FontSize="{DynamicResource MediumFont}"/>
+        <Button Grid.Row="1" Text="Add New Record" Clicked="OnAddNewClicked" Margin="0,10,0,10" HeightRequest="55" 
+                FontSize="{DynamicResource MediumFont}" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="25" FontAttributes="Bold" />
 
     </Grid>
 </ContentPage>

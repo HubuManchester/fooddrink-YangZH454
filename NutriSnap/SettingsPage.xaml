@@ -2,28 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutriSnap.SettingsPage"
-             Title="Settings">
+             Title="Settings"
+             BackgroundColor="#F1F8E9">
 
     <VerticalStackLayout x:Name="SettingsLayout" Spacing="25" Padding="20">
 
-        <Label Text="Accessibility &amp; Preferences" FontSize="{DynamicResource TitleFont}" FontAttributes="Bold" />
+        <Label Text="Accessibility &amp; Preferences" FontSize="{DynamicResource TitleFont}" FontAttributes="Bold" TextColor="#2E7D32" />
 
         <Grid ColumnDefinitions="*, Auto">
-            <Label Text="🌙 Dark Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" />
-            <Switch x:Name="ThemeSwitch" Grid.Column="1" Toggled="OnThemeToggled" />
+            <Label Text="Dark Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" TextColor="#333333" />
+            <Switch x:Name="ThemeSwitch" Grid.Column="1" Toggled="OnThemeToggled" OnColor="#4CAF50" />
         </Grid>
 
         <Grid ColumnDefinitions="*, Auto">
-            <Label Text="🔠 Large Text Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" />
-            <Switch x:Name="FontSwitch" Grid.Column="1" Toggled="OnLargeTextToggled" />
+            <Label Text="Large Text Mode" VerticalOptions="Center" FontSize="{DynamicResource NormalFont}" TextColor="#333333" />
+            <Switch x:Name="FontSwitch" Grid.Column="1" Toggled="OnLargeTextToggled" OnColor="#4CAF50" />
         </Grid>
 
         <Label x:Name="DemoText" Text="This is a preview of your text size." TextColor="Gray" FontSize="{DynamicResource SmallFont}" />
 
-        <BoxView HeightRequest="1" Color="LightGray" Margin="0,20,0,20" />
+        <BoxView HeightRequest="1" Color="#A5D6A7" Margin="0,20,0,20" />
 
-        <Button Text="Log Out" Clicked="OnLogoutClicked" BackgroundColor="DarkRed" TextColor="White" HeightRequest="50" />
+        <Button Text="Log Out" Clicked="OnLogoutClicked" BackgroundColor="#E53935" TextColor="White" HeightRequest="55" CornerRadius="25" FontSize="{DynamicResource MediumFont}" FontAttributes="Bold" />
 
     </VerticalStackLayout>
-
 </ContentPage>

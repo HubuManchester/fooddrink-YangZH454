@@ -2,29 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutriSnap.AddRecordPage"
-             Title="Add New Record">
+             Title="Add New Record"
+             BackgroundColor="#F1F8E9">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-            <Entry x:Name="NameEntry" Placeholder="Food Name (e.g., Apple)" />
-            <Entry x:Name="CategoryEntry" Placeholder="Category (e.g., Snack)" />
-            <Entry x:Name="CaloriesEntry" Placeholder="Calories (e.g., 95)" Keyboard="Numeric" />
+            <Entry x:Name="NameEntry" Placeholder="Food Name (e.g., Apple)" BackgroundColor="White" TextColor="#2E7D32" />
+            <Entry x:Name="CategoryEntry" Placeholder="Category (e.g., Snack)" BackgroundColor="White" TextColor="#2E7D32" />
+            <Entry x:Name="CaloriesEntry" Placeholder="Calories (e.g., 95)" Keyboard="Numeric" BackgroundColor="White" TextColor="#2E7D32" />
 
             <Label x:Name="ErrorLabel" TextColor="Red" FontAttributes="Bold" IsVisible="False" />
 
             <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10" Margin="0,10,0,0">
                 <Label x:Name="PhotoLabel" Text="No photo captured" VerticalOptions="Center" TextColor="Gray" />
-                <Button Grid.Column="1" Text="📸 Take Photo" Clicked="OnTakePhotoClicked" />
+                <Button Grid.Column="1" Text="Take Photo" Clicked="OnTakePhotoClicked" BackgroundColor="#81C784" CornerRadius="8" />
             </Grid>
             <Image x:Name="FoodPhoto" HeightRequest="200" Aspect="AspectFit" IsVisible="False" />
 
             <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="10" Margin="0,10,0,10">
                 <Label x:Name="LocationLabel" Text="No location captured" VerticalOptions="Center" TextColor="Gray" />
-                <Button Grid.Column="1" Text="📍 Get Location" Clicked="OnGetLocationClicked" />
-                <Button x:Name="ViewMapButton" Grid.Column="2" Text="🗺️ Map" Clicked="OnViewMapClicked" IsVisible="False" />
+                <Button Grid.Column="1" Text="Get Location" Clicked="OnGetLocationClicked" BackgroundColor="#81C784" CornerRadius="8" />
+                <Button x:Name="ViewMapButton" Grid.Column="2" Text="Map" Clicked="OnViewMapClicked" IsVisible="False" BackgroundColor="#4CAF50" CornerRadius="8" />
             </Grid>
 
-            <Button Text="💾 Save Record" Clicked="OnSaveClicked" HeightRequest="50" FontSize="18"/>
+            <Button Text="Save Record" Clicked="OnSaveClicked" HeightRequest="55" FontSize="{DynamicResource MediumFont}" 
+                    BackgroundColor="#4CAF50" TextColor="White" CornerRadius="25" FontAttributes="Bold" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

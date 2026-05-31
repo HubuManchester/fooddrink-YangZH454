@@ -111,5 +111,25 @@ namespace NutriSnap
         {
             await Shell.Current.GoToAsync(nameof(AddRecordPage));
         }
+
+        // --- Handle the logic for sliding deletion ---
+        private async void OnDeleteClicked(object sender, EventArgs e)
+        {
+            if (sender is SwipeItem swipeItem && swipeItem.CommandParameter is Models.FoodItem itemToDelete)
+            {
+                bool confirm = await DisplayAlert("Confirm Delete", $"Are you sure you want to delete '{itemToDelete.Name}'?", "Yes", "Cancel");
+
+                if (confirm)
+                {
+                    // Hardware vibration feedback
+                    try { Vibration.Default.Vibrate(TimeSpan.FromSeconds(0.1)); } catch { }
+
+                    await FoodCatalogService.DeleteFoodAsync(itemToDelete);
+
+                    FoodListView.ItemsSource = null;
+                    FoodListView.ItemsSource = await FoodCatalogService.GetAllFoodsAsync();
+                }
+            }
+        }
     }
 }

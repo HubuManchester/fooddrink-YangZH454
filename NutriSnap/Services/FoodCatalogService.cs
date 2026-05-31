@@ -31,5 +31,11 @@ namespace NutriSnap.Services
             await Init();
             await _db!.InsertAsync(item);
         }
+
+        public static async Task DeleteFoodAsync(FoodItem item)
+        {
+            await Init();
+            await _db!.DeleteAsync(item);
+        }
     }
 }
