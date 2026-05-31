@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutriSnap.AddRecordPage"
+             Title="Add New Record">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Entry x:Name="NameEntry" Placeholder="Food Name (e.g., Apple)" />
+        <Entry x:Name="CategoryEntry" Placeholder="Category (e.g., Snack)" />
+        <Entry x:Name="CaloriesEntry" Placeholder="Calories (e.g., 95)" Keyboard="Numeric" />
+
+        <Label x:Name="ErrorLabel" TextColor="Red" FontAttributes="Bold" IsVisible="False" />
+
+        <Button Text="Save Record" Clicked="OnSaveClicked" />
+    </VerticalStackLayout>
+</ContentPage>
