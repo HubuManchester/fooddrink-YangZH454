@@ -4,13 +4,27 @@
              x:Class="NutriSnap.AddRecordPage"
              Title="Add New Record">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
-        <Entry x:Name="NameEntry" Placeholder="Food Name (e.g., Apple)" />
-        <Entry x:Name="CategoryEntry" Placeholder="Category (e.g., Snack)" />
-        <Entry x:Name="CaloriesEntry" Placeholder="Calories (e.g., 95)" Keyboard="Numeric" />
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Entry x:Name="NameEntry" Placeholder="Food Name (e.g., Apple)" />
+            <Entry x:Name="CategoryEntry" Placeholder="Category (e.g., Snack)" />
+            <Entry x:Name="CaloriesEntry" Placeholder="Calories (e.g., 95)" Keyboard="Numeric" />
 
-        <Label x:Name="ErrorLabel" TextColor="Red" FontAttributes="Bold" IsVisible="False" />
+            <Label x:Name="ErrorLabel" TextColor="Red" FontAttributes="Bold" IsVisible="False" />
 
-        <Button Text="Save Record" Clicked="OnSaveClicked" />
-    </VerticalStackLayout>
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10" Margin="0,10,0,0">
+                <Label x:Name="PhotoLabel" Text="No photo captured" VerticalOptions="Center" TextColor="Gray" />
+                <Button Grid.Column="1" Text="📸 Take Photo" Clicked="OnTakePhotoClicked" />
+            </Grid>
+            <Image x:Name="FoodPhoto" HeightRequest="200" Aspect="AspectFit" IsVisible="False" />
+
+            <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="10" Margin="0,10,0,10">
+                <Label x:Name="LocationLabel" Text="No location captured" VerticalOptions="Center" TextColor="Gray" />
+                <Button Grid.Column="1" Text="📍 Get Location" Clicked="OnGetLocationClicked" />
+                <Button x:Name="ViewMapButton" Grid.Column="2" Text="🗺️ Map" Clicked="OnViewMapClicked" IsVisible="False" />
+            </Grid>
+
+            <Button Text="💾 Save Record" Clicked="OnSaveClicked" HeightRequest="50" FontSize="18"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

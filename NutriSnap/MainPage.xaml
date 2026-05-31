@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:NutriSnap.Models"
              x:Class="NutriSnap.MainPage"
-             Title="Records">
+             Title="NutriSnap Records">
 
     <Grid RowDefinitions="*, Auto" Padding="20">
 
@@ -11,17 +11,22 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:FoodItem">
                     <Frame Margin="0,0,0,10" Padding="15" BorderColor="LightGray">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
-                            <Label Text="{Binding Category}" FontSize="14" TextColor="Gray" />
-                            <Label Text="{Binding AccessibleSummary}" FontSize="14" Margin="0,5,0,0" />
-                        </VerticalStackLayout>
+                        <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="10">
+                            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding Category}" FontSize="14" TextColor="Gray" />
+                                <Label Text="{Binding AccessibleSummary}" FontSize="14" Margin="0,5,0,0" />
+                            </VerticalStackLayout>
+
+                            <Button Grid.Column="1" Text="🔊 Read" Clicked="OnReadClicked" CommandParameter="{Binding .}" VerticalOptions="Center" />
+                            <Button Grid.Column="2" Text="⏹ Stop" Clicked="OnStopReadClicked" BackgroundColor="DarkRed" VerticalOptions="Center" />
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Grid.Row="1" Text="Add New Record" Clicked="OnAddNewClicked" Margin="0,10,0,0" />
+        <Button Grid.Row="1" Text="➕ Add New Record" Clicked="OnAddNewClicked" Margin="0,10,0,0" HeightRequest="50" FontSize="18"/>
 
     </Grid>
 </ContentPage>
