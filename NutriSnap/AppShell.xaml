@@ -10,8 +10,15 @@
     <TabBar>
         <ShellContent
             Title="Records"
+            Icon="dotnet_bot.png"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
+
+        <ShellContent
+            Title="Settings"
+            Icon="dotnet_bot.png"
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Route="SettingsPage" />
     </TabBar>
 
 </Shell>
