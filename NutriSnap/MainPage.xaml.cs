@@ -102,7 +102,7 @@ namespace NutriSnap
                     var random = new Random();
                     var randomFood = _allFoods[random.Next(_allFoods.Count)];
 
-                    await DisplayAlert("Lucky Pick 🎲",
+                    await DisplayAlert("Lucky Pick",
                         $"How about:\n\n{randomFood.Name}\nCalories: {randomFood.Calories} kcal",
                         "Yum!");
                 }
