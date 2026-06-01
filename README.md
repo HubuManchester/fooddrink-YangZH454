@@ -22,3 +22,10 @@ NutriSnap integrates native Android hardware and advanced software architectural
   * Dynamic "Large Text Mode" utilizing `Preferences` and `DynamicResource` for visually impaired users.
   * Professional `SwipeView` for intuitive record deletion.
   * Real-time search and filtering.
+
+## Potential Future Features
+If development were to continue, the following features would be implemented:
+1. **Machine Learning Image Recognition:** Automatically identify the food and estimate calories using the device camera and a trained CoreML/TensorFlow Lite model.
+2. **Barcode Scanner:** Use the camera to scan food packaging barcodes to automatically fetch nutritional data from public APIs.
+3. **Social Sharing:** Allow users to share their healthy meal logs directly to social media platforms using native sharing intents.
+4. **Data Visualization:** Integrate a charting library to show weekly calorie trends and macronutrient breakdowns.
