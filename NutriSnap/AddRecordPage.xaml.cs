@@ -90,7 +90,10 @@ namespace NutriSnap
             }
         }
 
-        // Validation and Save Logic
+        /// <summary>
+        /// Validates user input and saves a new food record.
+        /// Integrates temporary hardware data (Photo Path and Location) into the model.
+        /// </summary>
         private async void OnSaveClicked(object sender, EventArgs e)
         {
             ErrorLabel.IsVisible = false;

@@ -87,7 +87,11 @@ namespace NutriSnap
             }
         }
 
-        // --- Hardware 2: Shake Logic ---
+        /// <summary>
+        /// Hardware Feature: Accelerometer.
+        /// Detects device shake to display a randomly selected food recommendation.
+        /// Includes debouncing to prevent multiple popups.
+        /// </summary>
         private void OnShakeDetected(object? sender, EventArgs e)
         {
             if (_isShowingRecommendation) return;

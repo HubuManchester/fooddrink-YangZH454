@@ -24,6 +24,11 @@ namespace NutriSnap.Services
             await _db.CreateTableAsync<FoodItem>();
         }
 
+        /// <summary>
+        /// Retrieves all food items. Attempts to sync with the cloud MockAPI first. 
+        /// If offline, gracefully falls back to the local SQLite database.
+        /// </summary>
+        /// <returns>A list of FoodItem objects.</returns>
         public static async Task<List<FoodItem>> GetAllFoodsAsync()
         {
             await Init();
